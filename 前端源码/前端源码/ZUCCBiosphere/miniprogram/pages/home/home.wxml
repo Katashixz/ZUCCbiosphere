@@ -1,0 +1,76 @@
+<!-- pages/home/home.wxml -->
+<view class="contain">
+    <view class="white"></view>
+    <view id="hots">
+        <view id="hot_left">
+            <text id="hot_text">十大热帖</text>
+            <image id="hot_pho" src="../../icon/hot2.png" />
+        </view>
+    </view>
+
+    <view id="other_acti">
+        <button id="ani_f" class="btn" type="primary" bindtap="tobiofri">
+            动物城友会
+            </button>
+        <button id="ani_info" class="btn" type="warn" disabled="{{disabled}}" bindtap="tobioinfo">
+            动植物科普
+        </button>
+    </view>
+ <view class="postWaterfall">
+        <view class="post"  
+        wx:for="{{postList}}"
+        wx:key="post_ID"
+        wx:for-item="item1"
+        data-index="{{index}}"
+        bindtap="toPost"
+        >
+            <view class="postLine1">
+                <view class="headIcon" >
+                    <image mode="aspectFill" src="{{item1.user_head}}" />
+                </view>
+                <view class="NameAndPostTime">
+
+                    <view class="postManName">{{item1.user_ID}}</view>
+                    <view class="postTime">发布于{{item1.post_Date}}</view>
+                </view>
+                
+
+                <view class="good" wx:if="{{item1.post_isTop}}">
+                    <view >顶置</view></view>
+                <view class="good" wx:elif="{{item1.post_isEssential}}">
+                    <view >精华</view></view>
+            </view>
+
+            <view class="postLine2">
+                <text >{{item1.post_Content}}</text>
+                <view class="imageWithContent"
+                wx:for="{{item1.post_Image}}"
+                wx:for-item="item2"
+                >
+                    <image src="{{item2.url}}" />
+                </view>
+            </view>
+
+            <view class="postLine3" >
+                <view class="postOperate" 
+                catchtap="changeLike" 
+                data-index="{{index}}">
+                    <image src="{{item1.post_isLiked?'../../icon/dianzan.png':'../../icon/dianzan_.png'}}" />
+                    
+                    <view>{{item1.post_likeNum?item1.post_likeNum:''}}</view>
+                </view>
+                <view class="postOperate">
+                    <image src="{{item1.post_isStared?'../../icon/pinglun.png':'../../icon/pinglun_.png'}}" />
+                    <view>{{item1.post_reportNum?item1.post_reportNum:''}}</view>
+                </view>
+                <view class="postOperate">
+                    <image src="../../icon/dashang2.png" />
+                    <view>打赏</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+</view>

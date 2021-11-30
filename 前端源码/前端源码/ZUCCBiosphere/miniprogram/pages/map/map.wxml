@@ -1,0 +1,44 @@
+<!--pages/map/map.wxml-->
+<view class="contain">
+    <image src="https://img0.baidu.com/it/u=4149156511,3484894279&fm=26&fmt=auto" />
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+    <view>
+        <view></view>
+        <view></view>
+    </view>
+</view>

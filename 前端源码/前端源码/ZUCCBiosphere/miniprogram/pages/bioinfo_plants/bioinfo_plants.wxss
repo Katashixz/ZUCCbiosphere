@@ -1,0 +1,137 @@
+/* pages/bioinfo_plants/bioinfo_plants.wxss *//* pages/bioinfo/bioinfo.wxss */
+#searchBox{
+    height: 300rpx;
+    width: 710rpx;
+    margin: 20rpx;
+
+}
+
+#searchLine{
+    height: 60rpx;
+    width: 710rpx;
+    display: flex;
+}
+
+#sl_frame{
+    height: 60rpx;
+    width: 550rpx;
+    display: flex;
+    background-color: rgb(172, 163, 163);
+    border-radius: 30rpx;
+    margin-left: 20rpx;
+}
+
+#sl_image{
+    padding-top: 15rpx;
+}
+
+#sl_text{
+    font-weight: lighter;
+    line-height: 60rpx;
+    align-content: center;
+}
+
+#searchLine button{
+    height:60rpx ;
+    width: 120rpx;
+    font-size: 30rpx;
+    font-weight: lighter;
+    align-content: center;
+}
+
+#hotSearch{
+    margin-top: 20rpx;
+    height: 220rpx;
+    background-color: #fff;
+}
+
+#hs_text{
+    margin-left: 20rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-weight: lighter;
+}
+
+#hs_content{
+    display: flex;
+    padding-top: 20rpx;
+    height: 150rpx;
+    margin-left: 20rpx;
+}
+
+.hsc_name{
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    width: 150rpx;
+    border-radius: 20rpx;
+    font-weight: lighter;
+    border: #313233 1rpx solid;
+    margin-right: 15rpx;
+}
+
+#typeNavigation{
+    height: 80rpx;
+    width: 450rpx;
+    margin-left:150rpx;
+    margin-right: 150rpx;
+}
+
+#creatureType{
+    height: 80rpx;
+    display: flex;
+}
+
+.ct_specific{
+    height: 80rpx;
+    width: 150rpx;
+    margin-left: 37.5rpx;
+    margin-right: 37.5rpx;
+    text-align: center;
+    font-size: 40rpx;
+
+}
+
+.ct_specific button::after{
+    border: none;
+}
+
+#iWantUpdate button{
+    height:70rpx ;
+    width: 180rpx;
+    margin-right: 0rpx;
+    font-size: 30rpx;
+    background-color: rgb(158, 245, 165);
+}
+
+#ct_plants{
+    border-bottom: firebrick 10rpx solid;
+}
+
+#bioinfoContent{
+    height: 1000rpx;
+    width: 100%;
+    background-color: rgb(177, 173, 173);
+}
+
+.bc_single{
+    height: 120rpx;
+    width: 730rpx;
+    margin: 10rpx;
+    display: flex;
+    background-color: blanchedalmond;
+}
+
+.bc_image{
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 100rpx;
+    margin: 10rpx;
+}
+
+.bc_name{
+    font-size: 50rpx;
+    line-height: 120rpx;
+    align-content: center;
+    padding-left: 50rpx;
+}

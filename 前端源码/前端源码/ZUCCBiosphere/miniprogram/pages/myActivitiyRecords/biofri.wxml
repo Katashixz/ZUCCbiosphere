@@ -1,0 +1,21 @@
+<!--pages/biofri/biofri.wxml-->
+<view class="contain">
+    <view id="acti">
+        <button id="organizeActivity" class="btn" bindtap="toACFC_startActivity">发起活动</button>
+        <button id="checkActivities" class="btn">我加入的活动</button>
+    </view>
+    <view id="bacThing">
+        <view class="bacblock">
+            <view id="bacblock_help" class="bacblock_left"><text >救助</text></view>
+            <view></view>
+        </view>
+        <view class="bacblock">
+            <view id="bacblock_pho" class="bacblock_left"><text >拍照</text></view>
+            <view></view>
+        </view>
+        <view class="bacblock">
+            <view id="bacblock_food" class="bacblock_left"><text >喂食</text></view>
+            <view></view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,68 @@
+<!--pages/push/push.wxml-->
+
+<view class="contain">
+    
+    <view id="themeSelc">
+        <!-- <view id="lineSelc1">
+            <view>
+                <image id="context1" src="../../icon/context.png" />
+            </view>
+            <view>
+                活动类型
+            </view>
+            <view>
+                <image id="right1" src="../../icon/right2.png" />
+            </view>
+            
+        </view> -->
+        
+        <view class="top">
+            <view class="pic1">
+                <image id="context1" src="../../icon/context.png" />
+            </view>
+            <view class="select" bindtap="showSelect"  id="{{index}}">{{ACFC_startActivity.default}}
+            </view>
+            <view class="top2">
+                <view class="option" hidden="{{ACFC_startActivity.hidden}}" bindtap="SelectVal" >
+                    <view wx:for="{{ACFC_startActivity.txt}}" wx:for-item="test_item" data-index="{{index}}"  wx:for-index="index">
+                {{test_item}}
+                    </view>
+                </view>
+            </view>
+
+
+            <view class="pic2">
+                <image id="right1" src="../../icon/right2.png" />
+            </view>
+        </view> 
+        <!-- <Select prop-array='{{selectArray}}'></Select> -->
+
+        <view id="lineSelc2">
+            <input placeholder="活动名称" bindinput="getActivityName"></input>
+            
+        </view>
+    </view>
+    <view id="bodyText">
+        <view id="textIn">
+            <textarea placeholder="此处讲明活动时间、地点等信息" name="" id="" cols="40" rows="20" bindinput="getActivityDescription"></textarea>
+            <!-- <input type="text" placeholder="此处讲明活动时间、地点等信息"/> -->
+        </view>
+        <view id="addPho">
+            <image src="../../icon/addPho.png" />
+        </view>
+
+    </view>
+    <view id="textPrompt">
+
+        <text >1、活动需遵守法律法规以及社区条款
+
+        </text>
+        <text >2、目前只支持jpg,png格式图片上传
+
+        </text>
+        <text >3、请勿滥用活动功能，违者将追究法律责任</text>
+    </view>
+    <view id="lineButtom">
+        <button class="btn" bindtap="release">发布</button>
+    </view>
+</view>

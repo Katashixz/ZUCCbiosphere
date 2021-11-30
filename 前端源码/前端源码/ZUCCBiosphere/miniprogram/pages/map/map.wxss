@@ -1,0 +1,5 @@
+/* pages/map/map.wxss */
+
+.contain{
+    background-image: url("https://img0.baidu.com/it/u=4149156511,3484894279&fm=26&fmt=auto");
+}

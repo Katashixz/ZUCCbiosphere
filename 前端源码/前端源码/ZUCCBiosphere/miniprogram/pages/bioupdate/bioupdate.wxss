@@ -1,0 +1,75 @@
+
+.parameter-wrap{
+    height: 100rpx;
+    width: 300rpx;
+    display: flex;
+}
+/* #ct_text{
+    
+} */
+.parameter-wrap button{
+    height: 80rpx;
+    width: 120rpx;
+    font-size: 30rpx;
+}
+
+.checked_parameter{
+    background: #36ab60;
+    padding: 3px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+#biocontent{
+    height: 820rpx;
+    width: 100%;
+    margin: 10rpx;
+}
+
+.itemView{
+    height: 75rpx;
+    margin: 25prx;
+    display: flex;
+}
+
+.input{
+    border: dimgrey 1rpx solid;
+    margin-left: 5rpx;
+    width: 550rpx;
+}
+
+#others{
+    height: 150rpx;
+}
+
+#sterilization{
+    width: 490rpx;
+}
+
+#biophotos{
+    margin-top: 55rpx;
+    height: 250rpx;
+    width: 200rpx;
+    margin-left: 60rpx;
+}
+
+#biophotos text{
+    font-size: 25rpx;
+    font-weight: lighter;
+}
+
+#bp_upload{
+    height: 150rpx;
+    width: 150rpx;
+    border:darkturquoise 5rpx dotted ;
+    font-size: 150rpx;
+}
+
+#submit{
+    height: 50rpx;
+    width: 180rpx;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    opacity: 80%;
+}

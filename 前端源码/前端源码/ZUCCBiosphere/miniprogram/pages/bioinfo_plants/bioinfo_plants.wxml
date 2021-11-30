@@ -1,0 +1,112 @@
+<!--pages/bioinfo/bioinfo.wxml-->
+<view class="contain">
+<!-- 搜索 -->
+    <view id="searchBox">
+        <view id="searchLine">
+            <view id="sl_frame">
+                <view id="sl_image" class=".iconfont .icon-sousuo">
+                </view>
+                <view id="sl_text">
+                    请输入想要了解的动植物
+                </view>
+            </view>
+            <view id="sl_cancel">
+                <button>
+                    取消
+                </button>
+            </view>
+        </view>
+        <view id="hotSearch">
+            <view id="hs_text">
+                热门搜索：
+            </view>
+            <view id="hs_content">
+                <view class="hsc_name">
+                    {{hs_name1}}
+                </view>
+                <view class="hsc_name">
+                    {{hs_name2}}
+                </view>
+            </view>
+        </view>    
+    </view>
+<!-- 分类导航 -->
+    <view id="typeNavigation">
+        <view id="creatureType">
+            <view id="ct_animals" class="ct_specific">
+                <button bindtap="tobioinfo_animals" type="default">
+                 动物
+                </button>
+            </view>
+            <view id="ct_plants" class="ct_specific">
+                植物
+            </view>
+        </view> 
+    </view>
+    <view id="iWantUpdate">
+        <button>
+            我要科普 
+        </button>       
+    </view>  
+<!-- 正文 -->
+    <view id="bioinfoContent">
+        <view class="bc_single">
+            <view>
+                <image class="bc_image" mode="aspectFill" src="https://upload-images.jianshu.io/upload_images/9515782-044e2b870306ebb5.jpg" />
+            </view>
+            <view class="bc_name">
+                白桦
+            </view>
+        </view>
+        <view class="bc_single">
+            <view>
+                <image class="bc_image" mode="aspectFill" src="https://upload-images.jianshu.io/upload_images/9515782-044e2b870306ebb5.jpg" />
+            </view>
+            <view class="bc_name">
+                白桦
+            </view>
+        </view>
+        <view class="bc_single">
+            <view>
+                <image class="bc_image" mode="aspectFill" src="https://upload-images.jianshu.io/upload_images/9515782-044e2b870306ebb5.jpg" />
+            </view>
+            <view class="bc_name">
+                白桦
+            </view>
+        </view>
+        <view class="bc_single">
+            <view>
+                <image class="bc_image" mode="aspectFill" src="https://upload-images.jianshu.io/upload_images/9515782-044e2b870306ebb5.jpg" />
+            </view>
+            <view class="bc_name">
+                白桦
+            </view>
+        </view>
+        <view class="bc_single">
+            <view>
+                <image class="bc_image" mode="aspectFill" src="https://upload-images.jianshu.io/upload_images/9515782-044e2b870306ebb5.jpg" />
+            </view>
+            <view class="bc_name">
+                白桦
+            </view>
+        </view>
+        <view class="bc_single">
+            <view>
+                <image class="bc_image" mode="aspectFill" src="https://upload-images.jianshu.io/upload_images/9515782-044e2b870306ebb5.jpg" />
+            </view>
+            <view class="bc_name">
+                白桦
+            </view>
+        </view>
+        <view class="bc_single">
+            <view>
+                <image class="bc_image" mode="aspectFill" src="https://upload-images.jianshu.io/upload_images/9515782-044e2b870306ebb5.jpg" />
+            </view>
+            <view class="bc_name">
+                白桦
+            </view>
+        </view>
+    </view>
+      
+      
+</view>

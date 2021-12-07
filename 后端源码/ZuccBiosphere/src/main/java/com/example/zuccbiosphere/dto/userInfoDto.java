@@ -1,49 +1,58 @@
 package com.example.zuccbiosphere.dto;
 
 public class userInfoDto {
-    public String openid = "";
-    public String userName = "";
-    public String userPassword = "";
-    public String userPhone = "";
-    public String userGender = "";
+    public String Openid = "";
+    public String Name = "";
+    public String Password = "";
+    public String Phone = "";
+    public String Gender = "";
+    public String AvatarUrl = "";
 
     public String getOpenid() {
-        return openid;
+        return Openid;
     }
 
     public void setOpenid(String openid) {
-        this.openid = openid;
+        this.Openid = openid;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return Name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return Password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        Password = password;
     }
 
-    public String getUserPhone() {
-        return userPhone;
+    public String getPhone() {
+        return Phone;
     }
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
-    public String getUserGender() {
-        return userGender;
+    public String getGender() {
+        return Gender;
     }
 
-    public void setUserGender(String userGender) {
-        this.userGender = userGender;
+    public void setGender(String gender) {
+        Gender = gender;
+    }
+
+    public String getAvatarUrl() {
+        return AvatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        AvatarUrl = avatarUrl;
     }
 }

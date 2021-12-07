@@ -1,21 +1,46 @@
 <!--pages/notice/notice.wxml-->
 
-<view class="contain">
+<view class="">
     <view >
         <view class="msgBlock">
-            <view id="name_notice">通知</view>
-            <view id="name_chat">私信</view>
+            <view id="name_notice" class="nameTitle {{isNotice?'chooseOne':''}}" bindtap="toNotice" >通知</view>
+            <view id="name_chat" class="nameTitle {{!isNotice?'chooseOne':''}}"  bindtap="toChatLine">私信</view>
         </view>
     </view>
     <view class="noticeBar">
         <view id="notice_word">
             通知列
         </view>
-        <view id="readAll">
-            全部已读
+        <view id="readAll" >
+            <view>
+                全部已读
+            </view>
+              
+            <view class=".iconfont icon-duihao">
+                
+            </view>     
         </view>
     </view>
-    <view id="notice_detail">
 
+    <view id="notice_detail">
+        <view class="singleNotice"
+        wx:for="{{isNotice?noticeList:chatList}}"
+        wx:key="Id"
+        >
+            <view class="noticeLeft">
+                <image mode="aspectFill" class="noticeImage" src="{{item.profilePicture}}"/>
+            </view>
+            <view class="noticeRight">
+                <view class="noticeTime">
+                    {{item.time}}
+                </view>
+                <view class="noticeName">
+                    {{item.name}}
+                </view>
+                <view class="noticeText">
+                    {{item.text}}
+                </view>
+            </view>
+        </view>
     </view>
 </view>

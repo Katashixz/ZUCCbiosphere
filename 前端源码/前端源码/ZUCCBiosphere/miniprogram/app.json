@@ -2,14 +2,22 @@
     "pages": [
         "pages/home/home",
         "pages/notice/notice",
-        "pages/push/push",
+        "pages/releasePost/releasePost",
         "pages/map/map",
         "pages/my/my",
-        "pages/biofri/biofri",
+        "pages/tenHotPost/tenHotPost",
         "pages/bioinfo/bioinfo",
+        "pages/bioinfoDetail/bioinfoDetail",
+        "pages/biofri/biofri",
+        "pages/startActivity/startActivity",
+        "pages/post/post",
         "pages/logs/logs",
-        "pages/releasePost/releasePost",
-        "pages/bioinfo_animals/bioinfo_animals"
+        "pages/bioupdate/bioupdate",
+        "pages/myActivitiyRecords/myActivitiyRecords",
+        "pages/login/login",
+        "pages/userRule/userRule",
+        "pages/about/index"
+        
     ],
     "window": {
         "backgroundTextStyle": "dark",

@@ -1,0 +1,57 @@
+.contain {
+  margin: 5rpx;
+}
+.contain .actType {
+  width: 740rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contain .actType .singleType {
+  height: 60rpx;
+  width: 140rpx;
+  margin: 5rpx;
+  font-size: 40rpx ;
+  text-align: center;
+  border-radius: 20rpx;
+  background: #b9c54f;
+}
+.contain .activityLine {
+  height: 200rpx;
+  width: 700rpx;
+  margin: 15rpx;
+  background-color: #fff;
+}
+.contain .activityLine .singleActivity {
+  display: flex;
+}
+.contain .activityLine .singleActivity .activityTitle {
+  height: 160rpx;
+  width: 400rpx;
+  font-size: 41rpx;
+  font-weight: bold;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.contain .activityLine .singleActivity .activityTheme {
+  margin-left: 150rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 100rpx;
+  font-size: 45rpx;
+  background: linear-gradient(to right, #c315ee, #4a8aff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-color: #8f2d2d;
+}
+.contain .activityLine .relevantActivityInfo {
+  display: flex;
+}
+.contain .activityLine .relevantActivityInfo #startTime {
+  padding-left: 100rpx;
+}

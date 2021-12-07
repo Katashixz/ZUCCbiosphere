@@ -1,0 +1,132 @@
+#searchBox{
+    padding: 20rpx;
+    background-color: #fff;
+
+    #searchLine{
+        height: 60rpx;
+        width: 710rpx;
+        display: flex;
+        #sl_frame{
+            height: 60rpx;
+            width: 550rpx;
+            display: flex;
+            background-color: #f2f2f2;
+            border-radius: 30rpx;
+            margin-left: 20rpx;
+            #sl_image{
+                padding-top: 15rpx;
+                margin-left: 10rpx;
+            }
+            #sl_text{
+                height: 60rpx;
+                width: 500rpx;
+                font-weight: lighter;
+                line-height: 60rpx;
+                align-content: center;
+            
+            }
+            
+        }
+
+        button{
+            height:60rpx ;
+            width: 120rpx;
+            margin-left: 10rpx;
+            font-size: 30rpx;
+            font-weight: 500;
+            align-content: center;
+            background-color: #eee;
+            border-radius: 40rpx;
+        }
+    }
+    #hotSearch{
+        margin-top: 20rpx;
+        display: flex;
+        flex-direction: column;
+        #hs_text{
+            margin-left: 20rpx;
+            height: 50rpx;
+            line-height: 50rpx;
+            font-weight: 500;
+        }
+        #hs_content{
+            display: flex;
+            margin-top: 20rpx;
+            margin-left: 20rpx;
+            .hsc_name{
+                width: 150rpx;
+                line-height: 50rpx;
+                text-align: center;
+                border-radius: 20rpx;
+                font-weight: 400;
+                border: #313233 1rpx solid;
+                margin-right: 15rpx;
+            }
+            
+        }
+        
+    }
+
+}
+
+#typeNavigation{
+    display: flex;
+    // margin-left:200rpx;
+    // margin-right: 200rpx;
+    background-color: #fff;
+    padding: 20rpx;
+
+    justify-content: center;
+    .ct_specific{
+        height: 80rpx;
+        line-height: 80rpx;
+        width: 150rpx;
+        font-size: 40rpx;
+        text-align: center;
+        border-radius: 15rpx;
+    }
+    .active{
+        background-color: #f2f2f2;
+        color: rgb(172, 64, 86); 
+        border-bottom: crimson 8rpx solid;
+    }
+    #iWantUpdate{
+        position: absolute;
+        right: 0rpx;
+        margin: 40rpx 10rpx;
+        font-size: 30rpx;
+        border-radius: 50rpx;
+        font-weight: 400;
+        background-color: rgb(32, 207, 47);
+        color: #fff;
+    }
+    
+}
+
+
+#bioinfoContent{
+    padding: 0, 20rpx;
+    display: flex;
+    flex-direction: column;
+    .bc_single{
+        margin: 20rpx 20rpx 0;
+
+        display: flex;
+        border-radius: 40rpx;
+        background-color: rgb(212, 180, 131);
+        .bc_image{
+            height: 100rpx;
+            width: 100rpx;
+            border-radius: 100rpx;
+            margin: 10rpx;
+        }
+        .bc_name{
+            font-size: 50rpx;
+            line-height: 120rpx;
+            align-content: center;
+            padding-left: 50rpx;
+        }
+        
+        
+    }
+}

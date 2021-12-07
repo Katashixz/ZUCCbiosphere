@@ -66,17 +66,17 @@ data-index="{{index}}"
                     楼主
                 </view>
             </view>
-            <view class="postTime">发布于{{item1.post_Date}}</view>
+            <view class="postTime">评论于{{item1.post_Date}}</view>
         </view>
         
-        <view class="commitLike" 
+        <!-- <view class="commitLike" 
         catchtap="changeLike" 
         data-index="{{index}}">
             <image src="{{item1.post_isLiked?'../../icon/dianzan.png':'../../icon/dianzan_.png'}}" />
             
             <view>{{item1.post_likeNum?item1.post_likeNum:''}}</view>
 
-    </view>
+    </view> -->
 
     </view>
 

@@ -5,62 +5,42 @@ Page({
    * 页面的初始数据
    */
   data: {
+      isNotice:false,
+
+      noticeList:[
+          {
+            Id:"1",
+            profilePicture:"https://c-ssl.duitang.com/uploads/item/201912/31/20191231121259_dckjf.thumb.1000_0.jpg",
+            name:"城院生态圈",
+            text:"非常欢迎我们会员的加入",
+            time:"一个小时前"
+          }
+      ],
+
+      chatList:[
+          {
+            Id:"1",
+            profilePicture:"https://c-ssl.duitang.com/uploads/item/201912/31/20191231121259_dckjf.thumb.1000_0.jpg",
+            name:"Diza",
+            text:"你好啊",
+            time:"一个小时前"
+          }
+      ]
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  toChatLine:function(){
+      this.setData({
+          isNotice:false
+      })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  
+  toNotice:function(){
+    this.setData({
+        isNotice:true
+    })
+}
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  
 })

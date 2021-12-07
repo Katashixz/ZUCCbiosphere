@@ -1,0 +1,30 @@
+<view class="contain">
+    <view  class="singlepost" wx:for="{{postList}}"
+                wx:key="post_ID"
+                wx:for-item="item1"
+                data-index="{{index}}"
+                bindtap="toPost">
+                <view class="left">
+                    <view class="top">
+                        <view class="number">
+                            0{{index+1}}
+                        </view >
+                        <view class="reportnum">
+                            评论数：{{item1.post_reportNum}}
+                        </view>
+                    </view>
+                      
+                    <view class="comments">
+                        <text>{{item1.post_Content}}</text>
+                    </view>
+                      
+                    
+                </view>
+                <view class="right">
+                    <image mode="aspectFill" style="height:150rpx; width:150rpx" src="{{item1.user_head}}" />
+                </view>
+                  
+                  
+                    
+    </view>
+</view>

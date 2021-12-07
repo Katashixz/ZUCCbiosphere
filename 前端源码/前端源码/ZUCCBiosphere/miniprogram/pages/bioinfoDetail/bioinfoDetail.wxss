@@ -1,0 +1,28 @@
+.contain #bioImage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://c-ssl.duitang.com/uploads/item/201912/31/20191231121259_dckjf.thumb.1000_0.jpg') no-repeat #000;
+  background-size: cover;
+  z-index: -1;
+}
+.contain #bioImage image {
+  width: 100%;
+  height: 100%;
+}
+.contain #iWantUpdate button {
+  height: 70rpx ;
+  width: 180rpx;
+  position: absolute;
+  right: 0rpx;
+  margin-top: 10rpx;
+  margin-bottom: 5rpx;
+  font-size: 30rpx;
+  background: rgba(0, 0, 0, 0);
+  background-color: #9ef5a5;
+}
+.contain .infoText {
+  color: chocolate;
+}

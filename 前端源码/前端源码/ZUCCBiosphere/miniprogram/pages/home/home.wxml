@@ -2,10 +2,31 @@
 <view class="contain">
     <view class="white"></view>
     <view id="hots">
-        <view id="hot_left">
+        <view id="hot_left" bindtap="toTenHotPosts">
             <text id="hot_text">十大热帖</text>
-            <image id="hot_pho" src="../../icon/hot2.png" />
+            <view  id="hot_pho"><image src="../../icon/hot2.png" /></view>
+            
         </view>
+        <swiper id="hot_right" 
+        autoplay="true"
+        interval="2500"
+        duration="1000"
+        circular="true"
+        vertical="true"
+        >
+            <swiper-item item-id=""
+            class="hr_carousel" 
+            wx:for="{{tenHotPosts}}"
+            wx:key="post_ID"
+            wx:for-item="item"
+            data-index="{{index}}"
+            bindtap="toPost"
+            >
+                0{{index+1}}
+                <text>{{item.post_Content}}</text>
+            </swiper-item
+>
+        </swiper>
     </view>
 
     <view id="other_acti">
@@ -36,19 +57,23 @@
                 
 
                 <view class="good" wx:if="{{item1.post_isTop}}">
-                    <view >顶置</view></view>
+                    <view >置顶</view></view>
                 <view class="good" wx:elif="{{item1.post_isEssential}}">
                     <view >精华</view></view>
             </view>
 
             <view class="postLine2">
                 <text >{{item1.post_Content}}</text>
-                <view class="imageWithContent"
-                wx:for="{{item1.post_Image}}"
-                wx:for-item="item2"
-                >
-                    <image src="{{item2.url}}" />
+                <view class="imageWithContent">
+                    <view class="singleImage"
+                    wx:for="{{item1.post_Image}}"
+                    wx:for-item="item2"
+                    >
+                        <image mode="aspectFill" src="{{item2.imageurl}}" />
+                    </view>
                 </view>
+                  
+                
             </view>
 
             <view class="postLine3" >
@@ -61,9 +86,9 @@
                 </view>
                 <view class="postOperate">
                     <image src="{{item1.post_isStared?'../../icon/pinglun.png':'../../icon/pinglun_.png'}}" />
-                    <view>{{item1.post_reportNum?item1.post_reportNum:''}}</view>
+                    <view>{{item1.post_commentNum?item1.post_commentNum:''}}</view>
                 </view>
-                <view class="postOperate">
+                <view class="postOperate" catchtap="toReward">
                     <image src="../../icon/dashang2.png" />
                     <view>打赏</view>
                 </view>

@@ -1,0 +1,69 @@
+.contain{
+    margin: 20rpx;
+    #activityLine1{
+        
+        height: 200rpx;
+        width:600rpx;
+        margin: 75rpx;
+        border-bottom: 2rpx black solid;
+        #roughActivity{
+            display: flex;
+            #activityTitle{
+                height: 160rpx;
+                width: 400rpx;
+                font-size: 51rpx;
+                font-weight: bold;
+                word-break: break-all;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp:2;
+                overflow: hidden;
+                text-overflow:ellipsis;//文字隐藏后添加省略号
+            }
+            #activityTheme{
+                margin-left: 150rpx;
+                height: 100rpx;
+                line-height: 100rpx;
+                width: 100rpx;
+                font-size: 45rpx;
+                background: linear-gradient(to right, #c315ee, #4a8aff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                background-color: rgb(143, 45, 45);
+            }
+        }
+        #relevantActivityInfo{
+            display: flex;
+            #startTime{
+                padding-left: 100rpx;
+            }
+        }
+
+        
+    }
+    #activityLine2{
+        height: 60rpx;
+        #menberSituation{
+            font-size: 38rpx;
+            font-weight: bold;
+        }
+        
+    }
+    #activityLine3{
+        width: 650rpx;
+        margin-left: 40rpx;
+        height: 600rpx;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp:2;
+        overflow: hidden;
+        text-overflow:ellipsis;//文字隐藏后添加省略号
+    }
+    #participate{
+        line-height: 50rpx;
+        width: 550rpx;
+        margin-left: 100rpx;
+        font-size: 40rpx;
+        background: linear-gradient(to right, #c315ee, #24b43c)
+    }
+}

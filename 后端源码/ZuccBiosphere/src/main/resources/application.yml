@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: "root"
+    password: "Jiangxiaopei0806,"
+    url: "jdbc:mysql://121.40.227.132:3306/ZUCCBiosphere?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 5
+        max-idle: 1
+        min-idle: 1
+        max-wait: 5000
+    timeout: 5000

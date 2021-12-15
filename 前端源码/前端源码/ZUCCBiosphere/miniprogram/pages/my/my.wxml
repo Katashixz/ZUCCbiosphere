@@ -1,0 +1,113 @@
+<!--pages/my/my.wxml-->
+<view class="contain">
+    <view id="myTop">
+        <view class="white"></view>
+        <view class="noLogin">
+            <!-- 测试未登录为！ -->
+            <view  wx:if="{{!hasUserInfo}}">
+             <button id="userLogin" bindtap="getUserProfile"> 登录 </button>
+            </view>
+
+        
+        <view id="infoAmost" wx:else="{{userInfo.avatarUrl}}">
+            <view id="headNameInfo">
+                <view >
+                    <image id="headPho" mode="aspectFill" src="{{userInfo.avatarUrl}}" />
+                </view>
+                <view id="nameAndRP">
+                    <view id="myName">{{userInfo.nickName}}</view>
+                    <view id="myRP">
+                        <view id="rpPho">
+                            <image  src="../../icon/heart.png"/>
+                        </view>
+                        <view>
+                            人品值：{{myrp}}
+                        </view>
+                    </view>
+                </view>
+                <view id="infoModify">
+                    {{isAdmin?'管理员':'会员'}}
+                </view>
+            </view>
+
+
+            <view id="pushStarCommit">
+                <view id="myPush">
+                    <view>{{myPush}}</view>
+                    <view class="pSCword">贴子</view>
+                </view>
+                <view>
+                    <view>{{myStar}}</view>
+                    <view class="pSCword">收藏夹</view>
+                </view>
+                <view>
+                    <view>{{myCommit}}</view>
+                    <view class="pSCword">最近评论</view>
+                </view>
+            </view>
+
+        </view>
+        </view>
+        <!-- <button id="user_login" bindtap="login" wx:else="">登陆</button> -->
+    </view>
+
+<!-- 工具 -->
+
+    <view id="usualTools">
+        <view id="uTTitle">常用工具</view>
+        <view id="uTInfo">
+            <button class="Tool" bindtap="" open-type="contact">
+                <view><image  src="../../icon/waiter.png"/></view>
+                <view>客服中心</view>
+            </button>
+            <button class="Tool" bindtap="scan">
+                <view><image  src="../../icon/discovery.png"/></view>
+                <view>活动扫码</view>
+            </button>
+            <button class="Tool" open-type="share">
+                <view><image  src="../../icon/invite.png"/></view>
+                <view>邀请校友</view>
+            </button>
+            <button class="Tool" bindtap="toRulesPage">
+                <view><image  src="../../icon/rule.png"/></view>
+                <view>平台规则</view>
+            </button>
+        </view>
+
+    </view>
+
+<!-- 其他功能 -->
+
+    <view id="otherTool">
+        <button class="otherLine" open-type="openSetting">
+            <view class="toolIcon">
+                <image src="../../icon/setting.png"/>
+            </view>
+            <view class="toolName">设置</view>
+            <view class="toolIn">
+                <image class="afterWord" src="../../icon/right2.png"/>
+            </view>
+        </button>
+        <button id="aboutUs" class="otherLine" bindtap="toAboutPage">
+            <view class="toolIcon">
+                <image src="../../icon/abouUs.png"/>
+            </view>
+            <view class="toolName">关于我们</view>
+            <view class="toolIn">
+                <image class="afterWord" src="../../icon/right2.png"/>
+            </view>
+        </button>
+        <button class="otherLine" open-type="feedback">
+            <view class="toolIcon">
+                <image src="../../icon/back.png"/>
+            </view>
+            <view class="toolName">意见反馈</view>
+            <view class="toolIn">
+                <image class="afterWord" src="../../icon/right2.png"/>
+            </view>
+        </button>
+
+    </view>
+
+
+</view>

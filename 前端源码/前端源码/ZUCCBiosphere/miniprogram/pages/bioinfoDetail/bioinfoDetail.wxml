@@ -1,0 +1,60 @@
+<view class="contain">
+    <view id="bioImage" style="opacity:{{2}}">
+        <!-- <image  src="" mode="scallToFill"  /> -->
+        <view id="iWantUpdate">
+            <button bindtap="toupdateInterface">
+                我要科普 
+            </button>       
+        </view>  
+        <view id="nickName">
+            <view>
+            别名 :
+            </view>
+            <view class="infoText">
+                {{nickName}}  
+            </view>     
+        </view>
+        
+        <view id="bioinfoContent">
+            <view class="singleInfo">
+                <view>
+                    学名:
+                </view>
+                <view class="infoText">
+                    {{scientificName}}
+                </view> 
+            </view>
+            <view class="singleInfo">
+                <view>
+                    状况:
+                </view>
+                <view class="infoText">
+                    {{situation}}
+                </view> 
+            </view>
+            <view class="singleInfo">
+                <view>
+                    性格:
+                </view>
+                <view class="infoText">
+                    {{character}}
+                </view> 
+            </view>
+            <view class="singleInfo">
+                <view>
+                    外貌:
+                </view>
+                <view class="infoText">
+                    {{appearance}}
+                </view> 
+            </view>
+          
+        </view>
+    </view>
+    
+      
+      
+
+      
+</view>
+  

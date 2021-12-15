@@ -1,0 +1,93 @@
+<!--pages/post/post.wxml-->
+
+<!-- 贴主的内容 -->
+
+<view class="post">
+    <view class="postLine1">
+        <view class="headIcon" >
+            <image mode="aspectFill" src="{{postDetail.user_icon}}" />
+        </view>
+        <view class="NameAndPostTime">
+
+            <view class="postManName">{{postDetail.user_ID}}</view>
+            <view class="postTime">发布于{{postDetail.post_Date}}</view>
+        </view>
+        
+
+        <view class="good" wx:if="{{postDetail.post_isEssential}}">
+            <view >精华</view></view>
+    </view>
+
+    <view class="postLine2">
+        <text >{{postDetail.user_content}}</text>
+        <view class="imageWithContent"
+        wx:for="{{postDetail.post_Image}}"
+        wx:for-item="item2"
+        >
+            <image src="{{item2.url}}" />
+        </view>
+    </view>
+
+    <view class="postLine3" >
+        <view class="postOperate">
+            <image src="{{postDetail.post_isStared?'../../icon/pinglun.png':'../../icon/pinglun_.png'}}" />
+            <view>{{postDetail.post_reportNum?postDetail.post_reportNum:''}}</view>
+        </view>
+        <view class="postOperate">
+            <image src="../../icon/dashang2.png" />
+            <view>打赏</view>
+        </view>
+        <view class="postOperate" 
+        catchtap="changeLike" 
+        data-index="{{index}}">
+            <image src="{{postDetail.post_isLiked?'../../icon/dianzan.png':'../../icon/dianzan_.png'}}" />
+            
+            <view>{{postDetail.post_likeNum?postDetail.post_likeNum:''}}</view>
+        </view>
+    </view>
+</view>
+
+<!-- 其他人回复 -->
+
+<view class="commit"  
+wx:for="{{commitDetail}}"
+wx:key="user_ID"
+wx:for-item="item1"
+data-index="{{index}}"
+>
+    <view class="postLine1">
+        <view class="headIcon" >
+            <image mode="aspectFill" src="{{item1.user_icon}}" />
+        </view>
+        <view class="NameAndPostTime">
+
+            <view class="postManName">{{item1.user_ID}}
+                <view class="isPoster" wx:if="{{item1.user_ID === postDetail.user_ID}}">
+                    楼主
+                </view>
+            </view>
+            <view class="postTime">评论于{{item1.post_Date}}</view>
+        </view>
+        
+        <!-- <view class="commitLike" 
+        catchtap="changeLike" 
+        data-index="{{index}}">
+            <image src="{{item1.post_isLiked?'../../icon/dianzan.png':'../../icon/dianzan_.png'}}" />
+            
+            <view>{{item1.post_likeNum?item1.post_likeNum:''}}</view>
+
+    </view> -->
+
+    </view>
+
+    <view class="postLine2">
+        <text >{{item1.user_Content}}</text>
+        <view class="imageWithContent"
+        wx:for="{{item1.post_Image}}"
+        wx:for-item="item2"
+        >
+            <image src="{{item2.url}}" />
+        </view>
+    </view>
+
+</view>

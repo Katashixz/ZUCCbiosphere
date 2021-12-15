@@ -9,21 +9,46 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUseGetUserProfile: false,
-    myname:"李天霸",
-    myrp: 319,
-    myPush: 1,
-    myStar: 12,
-    myCommit: 17,
-    isAdmin: true
+
+    myrp: 0,
+    myPush: 0,
+    myComment: 0,
+    myRewardRecord: 0,
+    
+    isAdmin: false,
+    // commitList:[],
+    
+  
   },
   onLoad() {
 
-    if (wx.getUserProfile) {
+    if(!getApp().globalData.hasUserInfo){
+      if (wx.getUserProfile) {
+        this.setData({
+          canIUseGetUserProfile: true
+        })
+      }
+    }else{
       this.setData({
-        canIUseGetUserProfile: true
+        hasUserInfo:getApp().globalData.hasUserInfo,
+        userInfo:getApp().globalData.userInfo
       })
-
+      
+      this.onRefreshUserInfo();
     }
+    
+  },
+
+  onShow(){
+    this.onRefreshUserInfo();
+  },
+
+  onPullDownRefresh: function(){
+    this.onRefresh();
+  },
+
+  onPullDownRefresh: function(){
+    this.onRefreshUserInfo();
   },
 
   getUserProfile(e) {
@@ -41,19 +66,14 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
-        
-
       },
-
        complete: () => {
         console.log("sendUserInfo Begin");
         this.sendUserInfo()
+        this.onRefreshUserInfo();
       } 
 
     })
-
-    
-
     // 登录
     wx.login({
       success: function (res) {
@@ -69,7 +89,7 @@ Page({
           method: 'GET',
           header:{'content-type': 'application/json;charset=utf-8',
                'x-auth-token': getApp().globalData.token
-    },
+       },
           success: function (r) {
             var token = r.header['x-auth-token'];
             var openid = r.header['openid'];
@@ -77,7 +97,7 @@ Page({
             getApp().globalData.openid = openid;
             console.log("---get wx token success---");
             console.log(getApp().globalData.openid);
-
+            
           }
 
         })
@@ -114,6 +134,30 @@ Page({
     })
   },
 
+  onRefreshUserInfo(){
+    var that = this
+    wx.request({
+        url: getApp().globalData.urlHome + '/user/loadUserInfo',
+        method:'POST',
+          header:{'content-type': 'application/json;charset=utf-8',
+                  'x-auth-token': getApp().globalData.token
+        },
+        data:{
+            openid:getApp().globalData.openid
+        },
+        complete(r){
+            console.log("here are the deatail")
+            console.log(r)
+            that.setData({
+              myrp:r.data.myrp ,
+              myPush: r.data.myPush,
+              myComment: r.data.myComment,
+              myRewardRecord: r.data.myRewardRecord,
+            })
+        },
+    })
+
+  },
 
 //   跳转到手册界面
   toRulesPage:function(){
@@ -129,6 +173,38 @@ Page({
       
     wx.navigateTo({
         url:'/pages/about/about'
+    })
+
+  },
+  //人品值详细记录
+  toMyRPRecord:function(){
+      
+    wx.navigateTo({
+        url:'/pages/myRPRecord/myRPRecord'
+    })
+
+  },
+  //跳转我的发帖界面
+  toMyPost:function(){
+      
+    wx.navigateTo({
+        url:'/pages/myPost/myPost'
+    })
+
+  },
+  //我的评论
+  toMyComment:function(){
+      
+    wx.navigateTo({
+        url:'/pages/myComment/myComment'
+    })
+
+  },
+  //我的打赏记录
+  toRewardRecord:function(){
+      
+    wx.navigateTo({
+        url:'/pages/myRewardRecord/myRewardRecord'
     })
 
   },

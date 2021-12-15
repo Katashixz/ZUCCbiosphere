@@ -101,6 +101,21 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/swagger-resources/**", "anon");
         chainDefinition.addPathDefinition("/webjars/**", "anon");
 
+        //论坛免拦截
+        chainDefinition.addPathDefinition("/api/postBar/loadPostDetail", "anon");
+        chainDefinition.addPathDefinition("/api/postBar/loadPost", "anon");
+        chainDefinition.addPathDefinition("/api/postBar/loadPostComment", "anon");
+
+        //热帖免拦截
+        chainDefinition.addPathDefinition("/api/postBar/loadHotPost", "anon");
+
+        //动植物科普免拦截
+        chainDefinition.addPathDefinition("/api/intro/loadAllIntroduce", "anon");
+
+        //城友会免拦截
+        chainDefinition.addPathDefinition("/api/acfc/loadActivities", "anon");
+        chainDefinition.addPathDefinition("/api/acfc/loadActivityDetail", "anon");
+
         //接口拦截
         //任务相关
         chainDefinition.addPathDefinition("/api/task/addUserScore", "noSessionCreation,authcToken");
@@ -113,6 +128,7 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/api/user/addUserCollect", "noSessionCreation,authcToken");
         chainDefinition.addPathDefinition("/api/user/getUserCollectOrFoot", "noSessionCreation,authcToken");
         chainDefinition.addPathDefinition("/api/user/deleteCollect", "noSessionCreation,authcToken");
+
 
         //卡片相关
         chainDefinition.addPathDefinition("/api/card/uploadCard", "noSessionCreation,authcToken");

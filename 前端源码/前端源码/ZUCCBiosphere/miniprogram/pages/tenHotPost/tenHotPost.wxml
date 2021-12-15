@@ -1,5 +1,5 @@
 <view class="contain">
-    <view  class="singlepost" wx:for="{{postList}}"
+    <view  class="singlepost" wx:for="{{postList}}" bindtap="toPost"
                 wx:key="post_ID"
                 wx:for-item="item1"
                 data-index="{{index}}"
@@ -10,7 +10,7 @@
                             0{{index+1}}
                         </view >
                         <view class="reportnum">
-                            评论数：{{item1.post_reportNum}}
+                            {{item1.post_commentNum==0?'暂无评论':'评论数：' + item1.post_commentNum}}
                         </view>
                     </view>
                       

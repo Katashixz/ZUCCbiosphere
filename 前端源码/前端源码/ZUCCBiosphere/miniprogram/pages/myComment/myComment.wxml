@@ -1,0 +1,31 @@
+<view class="contain">
+    <view class="singleComment"
+    wx:for="{{myCommitList}}"
+    wx:for-item="item"
+    wx:key="post_ID"
+    data-index="{{index}}"
+    bindtap="toPost"
+    >
+        <view >
+            <image class="commentIcon" src="{{userInfo.avatarUrl}}" mode="aspectFill"  />
+        </view>
+        <view class="commentDetail">
+            <view class="relatedNames">
+            {{userInfo.nickName}} 回复:{{item.commented_Name}}
+            </view>
+            <view class="commentContent">
+                {{item.comment_content}}
+            </view>
+            <view class="commentDate">
+                <view class=".iconfont .icon-miaobiao">
+                </view>
+                {{item.comment_date}}
+            </view>
+        </view>
+        <view class="postContent">
+            　{{item.post_content}}
+        </view>
+    </view>
+      
+</view>
+  

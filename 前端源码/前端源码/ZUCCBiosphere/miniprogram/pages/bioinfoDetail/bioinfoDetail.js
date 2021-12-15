@@ -21,5 +21,17 @@ Page({
           url: '/pages/bioupdate/bioupdate',
         })
     },
+
+    onLoad:function(options) {
+        console.log(options)
+        this.setData({
+            bioImage:options.bioImage,
+            nickName:options.nickName,
+            scientificName:options.scientificName,
+            situation:options.situation,
+            character:options.character,
+            appearance:options.appearance
+        })
+    },
    
 })

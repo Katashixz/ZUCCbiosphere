@@ -68,8 +68,11 @@
                     <view class="singleImage"
                     wx:for="{{item1.post_Image}}"
                     wx:for-item="item2"
+                    wx:for-index="index2"
                     >
-                        <image mode="aspectFill" src="{{item2.imageurl}}" />
+                        <image mode="aspectFill" src="{{item2.imageurl}}"
+                        data-idx="{{index}}"
+                        data-idx2="{{index2}}"  catchtap="handleImagePreview" />
                     </view>
                 </view>
                   
@@ -88,7 +91,11 @@
                     <image src="{{item1.post_isStared?'../../icon/pinglun.png':'../../icon/pinglun_.png'}}" />
                     <view>{{item1.post_commentNum?item1.post_commentNum:''}}</view>
                 </view>
-                <view class="postOperate" catchtap="toReward">
+                <view 
+                class="postOperate" 
+                catchtap="toReward"
+                data-index="{{index}}"
+                >
                     <image src="../../icon/dashang2.png" />
                     <view>打赏</view>
                 </view>

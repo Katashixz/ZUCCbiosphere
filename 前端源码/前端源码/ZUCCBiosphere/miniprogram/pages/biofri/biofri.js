@@ -82,14 +82,24 @@ Page({
         url:'/pages/startActivity/startActivity'
       })
   },
-  toActivityDetail: function(){
+
+  toActivityDetail: function(e){
+      console.log(e)
     wx.navigateTo({
-      url:'/pages/activityDetail/activityDetail'
+      url:'/pages/activityDetail/activityDetail?activityId=' 
+      + this.data.activitiesList[e.currentTarget.dataset.index].activityId
     })
   },
+
   toMyActivity: function(){
-    wx.navigateTo({
-      url:'/pages/myActivitiyRecords/myActivitiyRecords'
-    })
+      if (getApp().globalData.userInfo != null){
+        wx.navigateTo({
+          url:'/pages/myActivitiyRecords/myActivitiyRecords'
+        })
+
+      }
+      else{
+          login()
+      }
   }
 })

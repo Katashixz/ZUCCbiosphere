@@ -1,0 +1,25 @@
+.contain .singleRecord {
+  margin: 20rpx;
+  margin-top: 40rpx;
+  border-radius: 40rpx;
+  height: 160rpx;
+  background-color: #fff;
+  border-bottom: 2rpx #c0bebe solid;
+  display: flex;
+}
+.contain .singleRecord .rewardDetail {
+  width: 470rpx;
+  padding-top: 30rpx;
+  padding-left: 50rpx;
+}
+.contain .singleRecord .rewardDetail .commentDate {
+  display: flex;
+}
+.contain .singleRecord .rewardContent {
+  line-height: 160rpx;
+  text-align: center;
+  margin: 10rpx;
+  width: 220rpx;
+  height: 120rpx;
+  opacity: 0.8;
+}

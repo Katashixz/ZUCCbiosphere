@@ -37,9 +37,10 @@ App({
   },
   globalData: {
     userInfo: null,
-    urlHome: 'http://127.0.0.1:8080/api',
+    urlHome: 'http://121.40.227.132:8080/api',
     token: '',
     openid:'',
-    plans: []
+    plans: [],
+    hasUserInfo: false,
   }
 })

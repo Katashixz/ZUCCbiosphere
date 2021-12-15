@@ -52,4 +52,39 @@ Page({
     },
 
     
+  onLoad: function(options){
+    // console.log(options)
+    this.setData({
+        activityId:options.activityId
+    })
+    this.onRefresh();
+  },
+
+  //下拉刷新
+  onPullDownRefresh: function(){
+    this.onRefresh();
+  },
+    
+  //刷新发送请求到后端获取帖子数据
+  onRefresh(){
+    var that = this
+    console.log(getApp().globalData.openid)
+    wx.request({
+        url: getApp().globalData.urlHome + '/acfc/loadMyActivities',
+        method:'POST',
+          header:{'content-type': 'application/json;charset=utf-8',
+                  'x-auth-token': getApp().globalData.token
+        },
+        data:{
+            activityId:getApp().globalData.openid
+        },
+        complete(r){
+            console.log(r)
+            that.setData({
+                activitiesList:r.data
+            })
+        },
+      })
+
+  },
 })

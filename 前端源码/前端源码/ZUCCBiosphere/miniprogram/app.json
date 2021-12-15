@@ -1,10 +1,15 @@
 {
     "pages": [
+        "pages/about/index",
         "pages/home/home",
         "pages/notice/notice",
         "pages/releasePost/releasePost",
         "pages/map/map",
         "pages/my/my",
+        "pages/myComment/myComment",
+        "pages/myPost/myPost",
+        "pages/myRewardRecord/myRewardRecord",
+        "pages/myRPRecord/myRPRecord",
         "pages/tenHotPost/tenHotPost",
         "pages/bioinfo/bioinfo",
         "pages/bioinfoDetail/bioinfoDetail",
@@ -15,8 +20,7 @@
         "pages/bioupdate/bioupdate",
         "pages/myActivitiyRecords/myActivitiyRecords",
         "pages/login/login",
-        "pages/userRule/userRule",
-        "pages/about/index"
+        "pages/userRule/userRule"
         
     ],
     "window": {

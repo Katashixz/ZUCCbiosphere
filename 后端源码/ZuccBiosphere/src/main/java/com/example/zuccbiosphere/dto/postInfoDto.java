@@ -2,9 +2,13 @@ package com.example.zuccbiosphere.dto;
 
 import io.swagger.models.auth.In;
 import org.joda.time.DateTime;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+@Component
 public class postInfoDto {
     public String userID;
     public String postContent;
@@ -16,8 +20,17 @@ public class postInfoDto {
     public boolean postIsTop;
     public boolean postIsEssential;
     public String postTheme;
-    public String postImage;
+    public boolean postIsHot;
     public Long postID;
+    public List<String> urlList = new ArrayList<>();
+
+    public boolean isPostIsHot() {
+        return postIsHot;
+    }
+
+    public void setPostIsHot(boolean postIsHot) {
+        this.postIsHot = postIsHot;
+    }
 
     public Long getPostID() {
         return postID;
@@ -27,13 +40,6 @@ public class postInfoDto {
         this.postID = postID;
     }
 
-    public String getPostImage() {
-        return postImage;
-    }
-
-    public void setPostImage(String postImage) {
-        this.postImage = postImage;
-    }
 
     public String getPostUserAvatarUrl() {
         return postUserAvatarUrl;

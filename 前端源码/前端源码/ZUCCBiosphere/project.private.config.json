@@ -57,6 +57,43 @@
         {
           "name": "pages/updateRecordSuccess/index",
           "pathName": "pages/updateRecordSuccess/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "HOT",
+          "pathName": "pages/tenHotPost/tenHotPost",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "HOME ",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "INFO",
+          "pathName": "pages/bioinfo/bioinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "FRIEND",
+          "pathName": "pages/biofri/biofri",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myActivitiyRecords/myActivitiyRecords",
+          "pathName": "pages/myActivitiyRecords/myActivitiyRecords",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "HOME",
+          "pathName": "pages/home/home",
+          "query": "",
           "scene": null
         }
       ]

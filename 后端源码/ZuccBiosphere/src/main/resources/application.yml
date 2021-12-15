@@ -4,7 +4,8 @@ spring:
     password: "Jiangxiaopei0806,"
     url: "jdbc:mysql://121.40.227.132:3306/ZUCCBiosphere?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8"
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+    hikari:
+      max-lifetime: 120000
 
   redis:
     host: 127.0.0.1

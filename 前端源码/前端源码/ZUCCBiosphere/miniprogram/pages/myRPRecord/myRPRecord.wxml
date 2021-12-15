@@ -1,0 +1,23 @@
+<view class="contain">
+    <view class="singleRecord"
+    wx:for="{{myRPRecordList}}"
+    wx:for-item="item"
+    wx:key="item"
+    data-index="{{index}}"
+    >
+        <view class="recordDetail">
+            <view class="RPCountType" >
+                {{item.RPCount_type==0?"登录奖励":"打赏支出"}}
+            </view>
+            <view class="recordDate">
+                <view class=".iconfont .icon-miaobiao">
+                </view>
+                {{item.record_date}}
+            </view>
+        </view>
+        <view class="recordContent">
+            {{item.RPCount_type==0?"+":"-"}}{{item.RP_number}}
+        </view>
+    </view>
+      
+</view>

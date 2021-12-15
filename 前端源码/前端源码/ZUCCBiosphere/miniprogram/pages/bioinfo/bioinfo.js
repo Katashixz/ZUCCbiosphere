@@ -144,16 +144,54 @@ Page({
     // 进入动物详情界面
     toBioinfoDetail:function(e){
 
-        var toURL = this.data.contentAnimalList[e.currentTarget.dataset.index].ID;
+        var toURL = this.data.contentAnimalList[e.currentTarget.dataset.index];
         if (!this.data.isAnimals){
-            toURL = this.data.contentPlantList[e.currentTarget.dataset.index].ID
+            toURL = this.data.contentPlantList[e.currentTarget.dataset.index]
         }
         console.log(toURL);
       wx.navigateTo({
-          url:'/pages/bioinfoDetail/bioinfoDetail?bioinfoDetailID='+toURL
+          url:'/pages/bioinfoDetail/bioinfoDetail?bioImage='
+          +toURL.image + '&nickName=' + toURL.name 
+          + '&scientificName=' + toURL.scientificName 
+          + '&situation=' + toURL.situation
+          + '&character=' + toURL.character
+          + '&appearance=' + toURL.appearance
       })
-  }
+  },
 
+
+  
+    // 载入
+  onLoad: function(){
+    this.onRefresh();
+  },
+
+  //下拉刷新
+  onPullDownRefresh: function(){
+    this.onRefresh();
+  },
     
-  })
+  //刷新发送请求到后端获取帖子数据
+  onRefresh(){
+    var that = this
+    wx.request({
+        url: getApp().globalData.urlHome + '/intro/loadAllIntroduce',
+        method:'POST',
+          header:{'content-type': 'application/json;charset=utf-8',
+                  'x-auth-token': getApp().globalData.token
+        },
+  
+        complete(r){
+            console.log(r)
+            that.setData({
+                contentAnimalList:r.data[0],
+                contentPlantList:r.data[1]
+            })
+        },
+      })
+
+
+  },
+    
+})
 

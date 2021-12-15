@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,6 +26,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/user")
 public class usersController {
+    @Autowired
+    private DataSource dataSource;
+
+
     @Autowired
     private StringRedisTemplate redisTemplate;
 
@@ -47,185 +54,110 @@ public class usersController {
         return null;
     }
 
-    @ApiOperation(value = "添加用户足迹", notes = "需要传入JSON,其中包含:\n" +
-            "openid:***\n" +
-            "cardId:***\n" +
-            "latitude:***\n" +
-            "longitude:***")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "得到add foot success!表示添加成功\n" +
-                    "得到distance not enough!表示用户距离打卡点超过1公里\n" +
-                    "得到Unknown Error!表示更新失败，可能是网络问题或者传入参数有误"),
-    })
-    @PostMapping("/addUserFoot")
-    public String addCollect(@RequestBody JSONObject req){
-        String openid=req.getString("openid");
-        String cardId=req.getString("cardId");
-        Double latitude=req.getDouble("latitude");
-        Double longitude=req.getDouble("longitude");
 
-        try {
-            String cardKey="cards-info:"+cardId;
-            Map<Object, Object> map=redisTemplate.opsForHash().entries(cardKey);
-            JSONObject card = JSONObject.parseObject(map.get("key").toString());
-            Double cardLatitude=card.getDouble("latitude");
-            Double cardLongitude=card.getDouble("longitude");
-            Double dis= DistanceUtil.getDistance(longitude,latitude,cardLongitude,cardLatitude);
-
-            if(dis<=1000){
-                //为用户添加足迹
-                String userKey="users:"+openid;
-                Map<Object, Object> userMap=redisTemplate.opsForHash().entries(userKey);
-                JSONObject user = JSONObject.parseObject(userMap.get("key").toString());
-                String myFoot = user.getString("myFoot");
-
-                //检验是否重复
-                String[] tmp=myFoot.split("\\*");
-                for(int i=0;i<tmp.length;i++){
-                    if(tmp[i].length()==0)continue;
-
-                    if(tmp[i].equals(cardKey)){
-                        return "repeated!";
-                    }
-                }
-
-                myFoot+=cardKey+"*";
-                user.replace("myFoot",myFoot);
-                Map<String, Object> newUserMap = new HashMap<>();
-                newUserMap.put("key", JSON.toJSONString(user));
-                redisTemplate.opsForHash().putAll(userKey, newUserMap);
-                return "add foot success!";
-            }else{
-                return "distance not enough!";
-            }
-        }catch (Exception e){
-            logger.info(e.toString());
-            return "Unknown Error!";
-        }
-    }
-
-
-    @ApiOperation(value = "添加用户收藏", notes = "需要传入JSON,其中包含:\n" +
-            "openid:***\n" +
-            "cardId:***\n")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "得到add collect success!表示添加成功\n" +
-                    "得到add collect failed!可能网络不畅或者传入参数有误"),
-    })
-    @PostMapping("/addUserCollect")
-    public String addFoot(@RequestBody JSONObject req){
-        String openid=req.getString("openid");
-        String cardId=req.getString("cardId");
-
-        String[] check=cardId.split("&");
-        if(check.length!=3){
-            return "PE";
-        }
-        if(check[0].equals("undefined")||check[1].equals("undefined")||check[2].equals("undefined")){
-            return "PE";
-        }
-
-        try {
-            //为用户添加收藏
-            String cardKey="cards-info:"+cardId;
-            String userKey="users:"+openid;
-            Map<Object, Object> userMap=redisTemplate.opsForHash().entries(userKey);
-            JSONObject user = JSONObject.parseObject(userMap.get("key").toString());
-            String myCollect = user.getString("myCollect");
-
-            //检验是否重复
-            String[] tmp=myCollect.split("\\*");
-            for(int i=0;i<tmp.length;i++){
-                if(tmp[i].length()==0)continue;
-
-                if(tmp[i].equals(cardKey)){
-                    return "repeated!";
-                }
-            }
-
-            myCollect+=cardKey+"*";
-            user.replace("myCollect",myCollect);
-            Map<String, Object> newUserMap = new HashMap<>();
-            newUserMap.put("key", JSON.toJSONString(user));
-            redisTemplate.opsForHash().putAll(userKey, newUserMap);
-            return "add collect success!";
-        }catch (Exception e){
-            logger.info(e.toString());
-            return "add collect failed!";
-        }
-    }
-
-
-    @ApiOperation(value = "得到用户收藏/足迹列表", notes = "需要传入JSON,其中包含:\n" +
-            "cards:***\n" +
-            "注:只需把user信息中的collect传上来即可")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "得到Map格式的卡片列表"),
-    })
-    @PostMapping("/getUserCollectOrFoot")
-    public Map<Object, Object> getUserCollect(@RequestBody JSONObject req){
-        String tmp=req.getString("cards");
-        String[] cards=tmp.split("\\*");
-
-        Map<Object, Object> res= new HashMap<>();
-        int cnt=1;
-        for(int i=1;i<=cards.length;i++){
-            if(cards[i-1].length()==0)continue;
-
-            Map<Object, Object> map=redisTemplate.opsForHash().entries(cards[i-1]);
-            if(map!=null&&!map.isEmpty()){
-                res.put("key"+cnt,map);
-                cnt++;
-            }
-        }
-
-        return res;
-    }
-
-    @ApiOperation(value = "删除用户收藏", notes = "需要传入JSON,其中包含:\n" +
+    @ApiOperation(value = "打赏人品值", notes = "需要传入JSON,其中包含:\n" +
             "openid:***\n" +
             "cardId:***\n")
     @ApiResponses({
             @ApiResponse(code = 200, message = "得到delete collect success!表示添加成功\n" +
                     "得到delete collect failed!可能网络不畅或者传入参数有误"),
     })
-    @PostMapping("deleteCollect")
-    public String deleteCollect(@RequestBody JSONObject req){
+    @PostMapping("/rpSend")
+    public JSONObject rpSend(@RequestBody JSONObject req){
+        JSONObject res = new JSONObject();
         String openid=req.getString("openid");
-        String cardId=req.getString("cardId");
+        String toUserID=req.getString("posterID");
+        int point = req.getInteger("point");
 
-        String[] check=cardId.split("&");
-        if(check.length!=3){
-            return "PE";
-        }
-        if(check[0].equals("undefined")||check[1].equals("undefined")||check[2].equals("undefined")){
-            return "PE";
-        }
+        if (point == 0) point = 10;
+        else if (point == 1) point = 20;
+        else point = 50;
+
 
         try {
-            //为用户删除收藏
-            String cardKey="cards-info:"+cardId;
-            String userKey="users:"+openid;
-            Map<Object, Object> userMap=redisTemplate.opsForHash().entries(userKey);
-            JSONObject user = JSONObject.parseObject(userMap.get("key").toString());
-            String myCollect = user.getString("myCollect");
+            Connection conn = dataSource.getConnection();
 
-            String[] list=myCollect.split("\\*");
-            String res="";
-            for(int i=0;i<list.length;i++){
-                if(list[i].length()!=0 && !list[i].equals(cardKey)){
-                    res+=list[i]+"*";
-                }
+            String sql = "select user_rpPoint from user where user_ID = ?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, openid);
+            java.sql.ResultSet rs = pst.executeQuery();
+            //时间格式转换
+            SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            int user_rp = -1, toUser_rp;
+            if (rs.next()){
+                user_rp = rs.getInt(1);
+            }
+            if (user_rp < point){
+                res.put("result", "点数不够！");
+            }
+            else{
+                res.put("result", "成功打赏" + point + "人品值");
+                sql = "UPDATE `user` SET user_rpPoint = user_rpPoint + ? where user_ID = ?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1, point);
+                pst.setString(2, toUserID);
+                pst.executeUpdate();
+
+                sql = "UPDATE `user` SET user_rpPoint = user_rpPoint - ? where user_ID = ?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1, point);
+                pst.setString(2, openid);
+                pst.executeUpdate();
+
+
+                sql = "INSERT INTO rpRecord VALUES(RPrecordID, ?, ?, NOW(), 1, ?)";
+                pst = conn.prepareStatement(sql);
+                pst.setString(1, openid);
+                pst.setString(2, toUserID);
+                pst.setInt(3, point);
+                pst.executeUpdate();
+
+                //打赏次数记录+1___12/14 22:01
+                sql="update user set user_RewardPoint = user_RewardPoint+1 WHERE user_ID=?";
+                pst = conn.prepareStatement(sql);
+                pst.setString(1, openid);
+                pst.executeUpdate();
+
             }
 
-            user.replace("myCollect",res);
-            Map<String, Object> newUserMap = new HashMap<>();
-            newUserMap.put("key", JSON.toJSONString(user));
-            redisTemplate.opsForHash().putAll(userKey, newUserMap);
-            return "delete collect success!";
+
         }catch (Exception e){
-            logger.info(e.toString());
-            return "delete collect failed!";
+            e.printStackTrace();
         }
+
+
+        return res;
     }
+    @ApiOperation(value = "用户信息加载显示", notes = "需要传入JSON,其中包含:\n" +
+            "openid:***\n" +
+            "cardId:***\n")
+
+    @PostMapping("/loadUserInfo")
+    public JSONObject loadUserInfo(@RequestBody JSONObject req){
+        JSONObject res = new JSONObject();
+        String openid=req.getString("openid");
+        try {
+            Connection conn = dataSource.getConnection();
+
+            String sql = "SELECT user_rpPoint,user_PushPostPoint,user_CommentPoint,user_RewardPoint from `user` where user_ID=?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, openid);
+            java.sql.ResultSet rs = pst.executeQuery();
+            //时间格式转换
+            SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            if(rs.next()){
+                res.put("myrp",rs.getInt(1));
+                res.put("myPush",rs.getInt(2));
+                res.put("myComment",rs.getInt(3));
+                res.put("myRewardRecord",rs.getInt(4));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        return res;
+    }
+
 }

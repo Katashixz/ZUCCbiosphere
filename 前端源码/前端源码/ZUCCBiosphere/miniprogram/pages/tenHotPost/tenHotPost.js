@@ -84,7 +84,7 @@ Page({
               post_Content:"ccccccccssssssssssbbbbbbbbb",
               post_Date: "11月31日",
               post_Image:[],
-              post_reportNum:33,
+              post_commentNum:33,
               post_likeNum:2,
               post_isTop:false,
               post_isEssential:true,
@@ -98,5 +98,44 @@ Page({
         wx.navigateTo({
             url:'/pages/post/post?postID='+this.data.postList[e.currentTarget.dataset.index].post_ID
         })
-    }
+    },
+
+    // 载入
+    onLoad: function(){
+        this.onRefresh();
+    },
+
+  //下拉刷新
+  onPullDownRefresh: function(){
+    this.onRefresh();
+  },
+    
+  //刷新发送请求到后端获取帖子数据
+  onRefresh(){
+    var that = this
+    wx.request({
+        url: getApp().globalData.urlHome + '/postBar/loadHotPost',
+        method:'POST',
+          header:{'content-type': 'application/json;charset=utf-8',
+                  'x-auth-token': getApp().globalData.token
+        },
+  
+        complete(r){
+            console.log(r)
+            that.setData({
+                postList:r.data
+            })
+        },
+      })
+
+      console.log("-----datashow2-----")
+      console.log(that.data)
+
+  },
+  toPost :function(e){
+    console.log(e);
+    wx.navigateTo({
+        url:'/pages/post/post?postID='+this.data.postList[e.currentTarget.dataset.index].post_ID
+    })
+  },
 })

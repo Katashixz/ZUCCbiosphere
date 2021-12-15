@@ -1,0 +1,27 @@
+.contain .singleComment {
+  margin: 20rpx;
+  border-radius: 40rpx;
+  background-color: #bcf5f5;
+  height: 180rpx;
+  border-bottom: 2rpx #c0bebe solid;
+  display: flex;
+}
+.contain .singleComment .commentIcon {
+  margin: 10rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 140rpx;
+}
+.contain .singleComment .commentDetail {
+  width: 370rpx;
+}
+.contain .singleComment .commentDetail .commentDate {
+  display: flex;
+}
+.contain .singleComment .postContent {
+  margin: 10rpx;
+  width: 160rpx;
+  height: 160rpx;
+  opacity: 0.8;
+  background-color: #747171;
+}

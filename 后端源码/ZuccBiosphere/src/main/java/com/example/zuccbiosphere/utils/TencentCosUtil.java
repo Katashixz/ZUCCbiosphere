@@ -12,21 +12,21 @@ import java.io.File;
 import java.util.Random;
 
 /**
- * @Author: zh
- * @Date: 2020/6/5 16:22
+ * @Author: zh、hyh
+ * @Date: 2021/12/10 16:02
  */
 
 public class TencentCosUtil {
     // 存储桶名称
-    private static final String bucketName = "wxcontest-1305913165";
+    private static final String bucketName = "zucc-1308480699";
     //secretId 秘钥id
-    private static final String SecretId = "AKID5C2buvgnfGadQwBAtMYS5RVJr89tLWP1";
+    private static final String SecretId = "AKID98rLZWCqIVS8YhZ5LK2TcV7RUHn1yf5E";
     //SecretKey 秘钥
-    private static final String SecretKey = "NSGm20h6E5fy0lEQKyLQEm21i8IwLTO4";
+    private static final String SecretKey = "vf8KErDI6dtsa1D9oCJ9m8D2aqpXy80b";
     // 腾讯云 自定义文件夹名称
-    private static final String prefix = "cards/";
+    private static final String prefix = "postImages/";
     // 访问域名
-    public static final String URL = "https://wxcontest-1305913165.cos.ap-nanjing.myqcloud.com/";
+    public static final String URL = "https://zucc-1308480699.cos.ap-nanjing.myqcloud.com/";
     // 创建COS 凭证
     private static COSCredentials credentials = new BasicCOSCredentials(SecretId,SecretKey);
     // 配置 COS 区域 就购买时选择的区域 我这里是 广州（guangzhou）

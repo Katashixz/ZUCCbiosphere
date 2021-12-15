@@ -1,0 +1,32 @@
+.contain{
+    .mySinglePost{
+        margin: 20rpx;
+        border-radius: 20rpx;
+        border-bottom: 2rpx rgb(192, 190, 190) solid;
+        display: flex;
+        .myPostContent{
+            display: flex;
+            height: 150rpx;
+            width: 600rpx;
+            font-size: 35rpx;
+            font-weight: bold;
+            word-break: break-all;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp:2;
+            overflow: hidden;
+            text-overflow:ellipsis;//文字隐藏后添加省略号
+            .postType{
+
+                color:dodgerblue;
+            }
+        }
+        .postImage{
+            border-radius: 20rpx;
+            margin: 20rpx;
+            height: 200rpx;
+            width: 200rpx;
+
+        }
+        
+    }
+}

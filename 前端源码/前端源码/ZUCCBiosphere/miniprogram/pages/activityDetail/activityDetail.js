@@ -21,9 +21,48 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
+    onLoad: function(options){
+        // console.log(options)
+        this.setData({
+            activityId:options.activityId
+        })
+        this.onRefresh();
     },
+
+  //下拉刷新
+  onPullDownRefresh: function(){
+    this.onRefresh();
+  },
+    
+  //刷新发送请求到后端获取帖子数据
+  onRefresh(){
+    var that = this
+    wx.request({
+        url: getApp().globalData.urlHome + '/acfc/loadActivityDetail',
+        method:'POST',
+          header:{'content-type': 'application/json;charset=utf-8',
+                  'x-auth-token': getApp().globalData.token
+        },
+        data:{
+            activityId:this.data.activityId
+        },
+        complete(r){
+            console.log(r)
+            that.setData({
+                activityPersonId:r.data.activityPersonId,
+                activityType:r.data.activityType,
+                activityParticipantsNum:r.data.activityParticipantsNum,
+                activityTotolParticipantsNum:r.data.activityTotolParticipantsNum,
+                activityTitle:r.data.activityTitle,
+                activityContent:r.data.activityContent,
+                activityLocation:r.data.activityLocation,
+                activityStartDate:r.data.activityStartDate,
+                activityDate:r.data.activityDate
+            })
+        },
+      })
+
+  },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -53,12 +92,6 @@ Page({
 
     },
 
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
 
     /**
      * 页面上拉触底事件的处理函数

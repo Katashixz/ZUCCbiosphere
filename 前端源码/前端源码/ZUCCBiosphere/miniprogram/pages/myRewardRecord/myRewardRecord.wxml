@@ -1,0 +1,25 @@
+<view class="contain">
+    <view class="singleRecord"
+    wx:for="{{myRewardList}}"
+    wx:for-item="item"
+    wx:key="item"
+    data-index="{{index}}"
+    wx:if="{{item.RPCount_type==1}}"
+    >
+        <view class="rewardDetail">
+            <view class="relatedNames">
+                {{userInfo.nickName}}赠送{{item.rewarded_Name}}
+            </view>
+            <view class="commentDate">
+                <view class=".iconfont .icon-miaobiao">
+                </view>
+                {{item.rewarded_date}}
+            </view>
+        </view>
+        <view class="rewardContent">
+            　-{{item.rewarded_count}}
+        </view>
+    </view>
+      
+</view>
+

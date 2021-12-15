@@ -16,7 +16,7 @@
                 </view>
                 <view id="nameAndRP">
                     <view id="myName">{{userInfo.nickName}}</view>
-                    <view id="myRP">
+                    <view id="myRP" bindtap="toMyRPRecord">
                         <view id="rpPho">
                             <image  src="../../icon/heart.png"/>
                         </view>
@@ -32,17 +32,17 @@
 
 
             <view id="pushStarCommit">
-                <view id="myPush">
+                <view id="myPush" bindtap="toMyPost">
                     <view>{{myPush}}</view>
-                    <view class="pSCword">贴子</view>
+                    <view class="pSCword" >发贴</view>
                 </view>
-                <view>
-                    <view>{{myStar}}</view>
-                    <view class="pSCword">收藏夹</view>
+                <view bindtap="toMyComment">
+                    <view>{{myComment}}</view>
+                    <view class="pSCword" >评论</view>
                 </view>
-                <view>
-                    <view>{{myCommit}}</view>
-                    <view class="pSCword">最近评论</view>
+                <view bindtap="toRewardRecord">
+                    <view>{{myRewardRecord}}</view>
+                    <view class="pSCword" >打赏</view>
                 </view>
             </view>
 

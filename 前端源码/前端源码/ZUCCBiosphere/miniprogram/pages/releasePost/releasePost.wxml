@@ -32,7 +32,7 @@
     </view>
     <view id="bodyText">
         <view id="textIn">
-            <textarea placeholder="此处输入正文" name="" id="" cols="40" rows="20" bindinput="getPostContent"></textarea>
+            <textarea id="textDown" placeholder="此处输入正文" name="" cols="40" value="{{textDown}}" rows="20" bindinput="getPostContent"></textarea>
             
         </view>
         <view class="pictureMngr">
@@ -46,7 +46,7 @@
                     </view>
                 </view>
             </block>
-            <view id="addPho" bindtap="chooseImage" wx:if="{{images.length < 9}}">
+            <view id="addPho" bindtap="chooseImage" wx:if="{{images.length < 3}}">
                 <image src="../../icon/addPhotot2.png" />
                 <view >添加图片</view>
             </view>

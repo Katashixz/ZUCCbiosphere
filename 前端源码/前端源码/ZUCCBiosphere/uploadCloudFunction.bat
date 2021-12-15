@@ -1,1 +1,0 @@
-"E:\WechatDevelopers\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-9gsfm1w5dc94900c --n quickstartFunctions --r --project "F:\大学\作业\大三\软件工程\小组作业\源代码\ZUCCBiosphere" --report_first --report
